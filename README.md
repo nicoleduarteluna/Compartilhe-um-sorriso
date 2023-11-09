@@ -20,6 +20,9 @@ Miro Teixeira - 821139946 - miroteixeira.9946@aluno.saojudas.br
 
 ### Tecnologias Utilizadas
 
+<br /> 
 Back-end: Noje.js
+<br /> 
 Front-end: Typescript (utilizando frameworks Angular e PO-UI)
+<br /> 
 Banco de dados: Banco não relacional MongoDB
