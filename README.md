@@ -1,7 +1,7 @@
 # Projeto A3 - Compartilhe um Sorriso
 
-Vivemos em uma sociedade onde podemos considerar depressão e ansiedade como o mal do século, ainda mais considerando dados da OMS onde 10% da população mundial sofre de transtornos mentais, sendo o Brasil o líder no ranking dos países latino americanos. Nos tempos atuais, principalmente pós pandemia, temos contato com uma sociedade que teve um índice de crescimento de 25% dentre depressão e ansiedade
-.
+Vivemos em uma sociedade onde podemos considerar depressão e ansiedade como o mal do século, ainda mais considerando dados da OMS onde 10% da população mundial sofre de transtornos mentais, sendo o Brasil o líder no ranking dos países latino americanos. Nos tempos atuais, principalmente pós pandemia, temos contato com uma sociedade que teve um índice de crescimento de 25% dentre depressão e ansiedade.
+<br /> 
 O projeto "Compartilhe um Sorriso" tem como objetivo criar um site ou aplicativo onde as pessoas possam enviar mensagens positivas e motivadoras para aquelas que estão passando por momentos difíceis. A ideia é espalhar a felicidade e o apoio emocional de forma simples e eficaz. Quer embarcar nessa e fazer a diferença com a gente?
 
 ## Idealizadores do Projeto 
