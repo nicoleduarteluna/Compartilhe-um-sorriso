@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NovoCadastroComponent } from './pages/novo-cadastro/novo-cadastro.component';
 import { NovoCadastroModule } from './pages/novo-cadastro/novo-cadastro.module';
 import { FacModule } from './pages/fac/fac.module';
+import { HelpModule } from './pages/hekp/help.module';
+import { TextToHelpModule } from './pages/textToHelp/text-to-help.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FacModule } from './pages/fac/fac.module';
     DadosModule,
     NovoCadastroModule,
     HomeModule,
-    FacModule
+    FacModule,
+    HelpModule,
+    TextToHelpModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

@@ -58,7 +58,7 @@ app.get("/api/usuarios/:user", (req, res, next) => {
   Usuario.findOne({ user: req.params.user }).then((resultado) => {
     console.log(resultado);
     res.status(200).json({
-      mensagem: "Profissional encontrado",
+      mensagem: "Usuário encontrado",
       usuarios: resultado,
     });
   });
@@ -75,6 +75,7 @@ app.put("/api/usuarios/:usuario", (req, res, next) => {
         usuario: req.body.usuario,
         identidadeGenero: req.body.identidadeGenero,
         senha: req.body.senha,
+        mensagens: req.body.mensagens
       },
     }
   ).then((result) => {

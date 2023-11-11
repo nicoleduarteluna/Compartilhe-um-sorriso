@@ -6,7 +6,8 @@ const usuarioSchema = mongoose.Schema({
   nome: { type: String, required: true },
   dataNascimento: { type: String, required: true },
   identidadeGenero: { type: String, required: true },
-  telefone: { type: String, required: true }
+  telefone: { type: String, required: true },
+  mensagens: [{ anonimato: Boolean, texto: String}],
 });
 
 module.exports = mongoose.model("Usuario", usuarioSchema);

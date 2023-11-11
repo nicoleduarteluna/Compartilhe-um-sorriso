@@ -17,6 +17,7 @@ export class DadosComponent implements OnInit {
   telefone: string;
   identidadeGenero: string;
   senha: string;
+  mensagens = [];
 
   @ViewChild('modalUpdate') modalUpdate: PoModalComponent;
 
@@ -47,6 +48,7 @@ export class DadosComponent implements OnInit {
     this.identidadeGenero = sessionStorage.getItem('IdentidadeGenero');
     this.email = sessionStorage.getItem('E-mail').toLocaleLowerCase();
     this.telefone = sessionStorage.getItem('Telefone');
+    this.mensagens = JSON.parse(sessionStorage.getItem("Mensagens"));
   }
 
   openModal() {
@@ -60,8 +62,9 @@ export class DadosComponent implements OnInit {
       dataNascimento: this.dataNascimento,
       identidadeGenero: this.identidadeGenero,
       telefone: this.telefone,
-      usuario: this.email,
-      senha: this.senha
+      usuario: this.email.toLocaleLowerCase(),
+      senha: this.senha,
+      mensagens: this.mensagens
     };
 
     this.dadosService
@@ -75,7 +78,7 @@ export class DadosComponent implements OnInit {
     sessionStorage.setItem('User', this.email);
     sessionStorage.setItem('Password', this.senha);
     sessionStorage.setItem('Nome', this.nomeCompleto);
-    sessionStorage.setItem('E-mail', this.email);
+    sessionStorage.setItem('E-mail', this.email.toLocaleLowerCase());
     sessionStorage.setItem('DataNascimento', this.dataNascimento);
     sessionStorage.setItem('IdentidadeGenero', this.identidadeGenero);
     sessionStorage.setItem('Telefone', this.telefone);

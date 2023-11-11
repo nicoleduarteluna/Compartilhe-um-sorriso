@@ -1,0 +1,51 @@
+<po-page-default p-title="Você quer ajudar alguém?">
+    <div class="po-field-title">
+        Ajude a fazer a diferença no dia de alguém! 
+        <div class="widgets" *ngIf="exibeWidgets">
+            <po-widget *ngFor="let msg of mensagens">
+                <div class="content">
+                    <b>Enviado por: {{ msg.user.split(' ')[0] }}</b>
+                    <p> {{ msg.texto }}</p>
+                </div>
+                <div class="btn">
+                    <po-button 
+                        p-label="Enviar Mensagem"
+                        p-kind="secondary"
+                        (p-click)="showToHelp(msg)"
+                        p-small="true">
+                    </po-button>
+                </div>
+            </po-widget>
+        </div>
+        <div class="widgets" *ngIf="!exibeWidgets">
+            <po-widget>
+                <div class="content">
+                    <b>   {{ enviadoPor }}</b>
+                    <p> {{ mensagem }} </p>
+                </div>                
+            </po-widget>
+            <div class="checkbox">
+                <po-checkbox 
+                    name="anonimo"
+                    p-label="Quero anonimato"
+                    [(ngModel)]="anonimato"> 
+                </po-checkbox>
+            </div>
+            <div class="textArea">
+                <po-textarea 
+                    name="textToHelp" 
+                    p-label="Escreva aqui seu texto ajudante!" 
+                    [(ngModel)]="textToHelp"
+                    p-rows="6"> 
+                </po-textarea>
+            </div>
+            <div class="button">
+                <po-button 
+                    p-label="Enviar ajuda"
+                    p-kind="primary"
+                    (p-click)="sendTextToHelp()">
+                </po-button> 
+            </div>
+        </div>
+    </div>
+</po-page-default>

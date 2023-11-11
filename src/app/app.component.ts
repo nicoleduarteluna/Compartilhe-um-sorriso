@@ -14,6 +14,7 @@ export class AppComponent implements AfterViewChecked {
   mostraMenu: boolean = false;
   menuItemSelected: string;
   usuarioLogado: any;
+  usuarios = [];
 
   menus: Array<PoMenuItem> = [
     {
@@ -115,8 +116,9 @@ export class AppComponent implements AfterViewChecked {
   }
 
   updateMenu(menu: PoMenuItem) {
+    this.usuarios = this.authService.getUsuarios();
     this.menuItemSelected = menu.label;
-    this.router.navigate([menu.link], { state: { menu: this.menuItemSelected, usuario: this.usuarioLogado } })
+    this.router.navigate([menu.link], { state: { menu: this.menuItemSelected, usuario: this.usuarioLogado, usuarios: this.usuarios } })
   }
 
   openModalExit() {

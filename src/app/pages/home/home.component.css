@@ -1,72 +1,9 @@
-.sample-menu-header-text-color {
-  color: #9da7a9;
-}
-
-figure{
-  display: flex;
-  justify-content: center;
-}
-
-.container-widget-cert{
-  display: flex;
-  justify-content: center;
-}
-
-.widget-card {
-  cursor: pointer;
-  position: relative;
-
-}
-
-.widget-card:hover {
-  margin-top: 1%;
-  border: 4px solid #0c9abe;
-  padding: 0px;
-  padding-bottom: 0px 0px 0px 0px;
-  background:  #0c9abe;
-  transition: 1s;
-}
-
-
-.widget-text {
-  line-height: 1.33;
-  letter-spacing: normal;
+/* .widgets {
   text-align: center;
-  color: #0c9abe;
-  position:absolute;
-  top:45%;
-  left: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-
-span{
-  padding-right: 20px;
-}
-
-.labelCentral {
-  margin-left: 45%;
-}
-
-.invisible {
-  color: white;
-}
-
-.btnLaudar {
-  margin-top: 2%;
-}
-
-.faturamento-container {
-  margin-top: 30px;
-}
-
-div.po-font-subtitle.po-text-center.autorizador-widget-text {
-  font-size: 3vh;
-}
-
-div.autorizador-widget-text-descricao {
-    font-size: 2vh;
-}
-
 
 .autorizador-widget {
   cursor: pointer;
@@ -94,25 +31,51 @@ div.autorizador-widget-text-descricao {
   letter-spacing: normal;
   text-align: center;
   line-height: 1.71;
-  color: #1d2426;
-}
+  color: #5e6061;
+  font-size: 15px;
+} */
 
-.po-widget-disabled {
+.my-div {
   background-color: white;
-  cursor: not-allowed;
-  margin-bottom: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 60%;
+  border-color: 1px solid #c686ff;
+  background-clip: border-box;
+  position: relative; 
+  top: 38%; transform: 
+  translateY(-38%);
+  box-shadow: 0 0 10px #aeacaf;
 }
 
-.po-widget-disabled .po-widget-body {
-  cursor: not-allowed;
-  background-color: white;
+.my-title {
+  color: #0c9abe;;
 }
 
-.po-widget-disabled .po-widget .autorizador-widget-text {
-  color: #c5c3c3;
+.my-description {
+  color: #5e6061;
+  font-size: 15px;
 }
 
-.po-widget-disabled .po-widget .autorizador-widget-text-descricao {
-  color: #c5c3c3;
+.my-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 6%;
 }
 
+.my-title,
+.my-description {
+  margin: 0;
+  padding: 0;
+}
+
+.my-div:hover {
+  background-color: rgb(206, 235, 243);
+  transition:  0.2s ease-in-out;
+
+}

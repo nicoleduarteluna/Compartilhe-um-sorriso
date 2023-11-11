@@ -1,0 +1,25 @@
+<po-page-default p-title="Você quer ser ajudado?">
+    <div class="anonimato">
+        <po-checkbox 
+            name="anonimo"
+            p-label="Quero anonimato"
+            [(ngModel)]="anonimato"> 
+        </po-checkbox>
+    </div>
+    <div class="texto">
+        <po-textarea 
+            name="ajuda" 
+            p-label="Deixe o seu desabafo aqui"  
+            p-placeholder="Divida com outras pessoas o que você está pensando!" 
+            p-rows="6"
+            [(ngModel)]="mensagem"> 
+        </po-textarea>
+    </div>
+    <div class="button">
+        <po-button 
+            p-label="Enviar Mensagem"
+            p-kind="primary"
+            (p-click)="sendMessage()">
+        </po-button> 
+    </div>
+</po-page-default>

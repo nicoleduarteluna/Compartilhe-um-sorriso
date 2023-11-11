@@ -25,7 +25,7 @@ export class DadosService {
   }
 
   atualizarBeneficiario(dados) {
-    return this.http.put(`http://localhost:9000/api/usuarios/${this.id}`, dados);
+    return this.http.put(`http://localhost:9000/api/usuarios/${sessionStorage.getItem('E-mail')}`, dados);
   }
 
 }

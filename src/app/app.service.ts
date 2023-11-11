@@ -8,8 +8,7 @@ export class AppService {
   constructor() { }
 
   isLogged() {
-    console.log(sessionStorage);
-    return !!(sessionStorage.getItem('User')); //Retorna se estão logado.
+    return !!(sessionStorage.getItem('User')); //Retorna se estï¿½o logado.
   }
 
 }

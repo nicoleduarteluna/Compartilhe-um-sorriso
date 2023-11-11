@@ -9,6 +9,7 @@ import {
 import { NotificationService } from 'src/app/util/notification.service';
 import { DadosService } from '../dados/dados.service';
 import { HomeService } from './home.service';
+import { AuthService } from 'src/app/login/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomeComponent implements OnDestroy {
   usuarioLogado: any;
   labelConteudo: string = 'Conteúdo';
   filtro: string = 'nome';
+  usuarios = [];
 
   filtroOptions: Array<PoSelectOption> = [
     { label: 'Nome do Paciente', value: 'nome' },
@@ -52,91 +54,16 @@ export class HomeComponent implements OnDestroy {
     private router: Router,
     private homeService: HomeService,
     private dadosService: DadosService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private authService: AuthService
   ) {
     const nav = this.router.getCurrentNavigation().extras.state;
-    if (nav) {
-      this.usuarioLogado = nav.usuarioLogado;
-      this.dadosService.setId(this.usuarioLogado.usuario);
-    } else {
-      this.user = '';
-      this.user = sessionStorage.getItem('User').toLocaleLowerCase();
-      this.getUsers();
-    }
+    this.usuarios = nav.usuarios;
   }
 
-  ngOnInit(): void {
-    this.getExames(false);
-  }
+  ngOnInit(): void { }
 
-  ngOnDestroy(): void {
-    this.exames = [];
-  }
-
-  printMenuAction(menu: PoMenuItem) {
-    this.menuItemSelected = menu.label;
-  }
-
-  getExames(filtrar) {
-    this.homeService.getExames().subscribe((dados: any) => {
-      dados.beneficiarios.forEach((beneficiario) => {
-        beneficiario.exames.forEach((exame) => {
-          exame = {
-            ...exame,
-            nome: beneficiario.nome,
-            dataNascimento: beneficiario.dataNascimento,
-            cpf: beneficiario.cpf,
-            rg: beneficiario.rg,
-            telefone: beneficiario.telefone,
-            email: beneficiario.email,
-            id: beneficiario.id,
-          };
-          if (!filtrar) {
-            this.exames.push(exame);
-          } else {
-            if (exame[`${this.filtro}`] == this.conteudoFiltro) {
-              this.exames.push(exame);
-            }
-          }
-        });
-      });
-    });
-  }
-
-  changeFilter(filtro) {
-    this.filtro = filtro;
-  }
-
-  filtrarItens(conteudo) {
-    this.exames = [];
-    this.getExames(true);
-  }
-
-  teste(row) {
-    this.rowSelected = {
-      id: row.id,
-      nome: row.nome,
-      dataNascimento: row.dataNascimento,
-      cpf: row.cpf,
-      rg: row.rg,
-      telefone: row.telefone,
-      email: row.email,
-      nomeExame: row.nomeExame,
-      dataExecucao: row.dataExecucao,
-      statusLaudo: row.statusLaudo,
-      laudo: row.laudo,
-    };
-  }
-
-  realizarLaudo() {
-    if(this.rowSelected.statusLaudo == 'Laudado') {
-      this.notificationService.warning(`Exame ${this.rowSelected.nomeExame} já foi laudado!`);
-    } else {
-      this.router.navigate(['/realizar-laudo'], {
-        state: { exame: this.rowSelected },
-      });
-    }
-  }
+  ngOnDestroy(): void {}
 
   getUsers() {
     this.homeService.getUsers(this.user).subscribe((users: any) => {
@@ -148,7 +75,12 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate(['/dados']);
   }
 
-  redirectToExames() {
-    this.router.navigate(['/exames']);
+  redirectToAjuda() {
+    this.router.navigate(['/help']);
   }
+
+  redirectToText() {
+    this.router.navigate(['text-to-help'], { state: { usuarios: this.usuarios } });
+  }
+
 }

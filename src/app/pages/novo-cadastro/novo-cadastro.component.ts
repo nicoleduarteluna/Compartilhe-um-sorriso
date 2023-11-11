@@ -69,10 +69,10 @@ export class NovoCadastroComponent implements OnInit {
       .createUsuario('http://localhost:9000/api/usuarios', this.userForm)
       .subscribe({
         next: (data: any) => {
-          console.log('Usuário inserido no banco');
+          this.notificationService.success('Usuário inserido no banco');
         },
         error: (err) => {
-          console.log('Erro ao inserir usuário no banco');
+          this.notificationService.success('Erro ao inserir usuário no banco');
         },
       });
   }
