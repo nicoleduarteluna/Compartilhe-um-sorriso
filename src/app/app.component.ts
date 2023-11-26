@@ -15,7 +15,7 @@ export class AppComponent implements AfterViewChecked {
   menuItemSelected: string;
   usuarioLogado: any;
   usuarios = [];
-
+   
   menus: Array<PoMenuItem> = [
     {
       label: 'Home',
@@ -32,18 +32,35 @@ export class AppComponent implements AfterViewChecked {
       link: '/dados'
     },
     {
-      label: 'FAC',
+      label: 'Minhas Mensagens',
+      action: this.updateMenu.bind(this),
+      icon: 'po-icon po-icon-message',
+      shortLabel: 'Mensagens',
+      link: '/my-messages'
+    },
+    {
+      label: 'FAQ',
       action: this.updateMenu.bind(this),
       icon: 'po-icon po-icon-news',
-      shortLabel: 'FAC',
-      link: '/fac'
+      shortLabel: 'FAQ',
+      link: '/faq'
     },
     {
       label: 'Sair',
       action: this.openModalExit.bind(this),
       icon: 'po-icon po-icon-exit',
-      shortLabel: 'Sair',
-      link: '/sair'
+      shortLabel: 'Sair'
+    },
+  ];
+
+  updateMenus = [];
+  menuNovoCadastro = [
+    {
+      label: 'Home',
+      action: this.updateMenu.bind(this),
+      icon: 'po-icon po-icon-home',
+      shortLabel: 'Home',
+      link: '/login'
     },
   ];
 
@@ -70,40 +87,9 @@ export class AppComponent implements AfterViewChecked {
 
     this.authService.usuarioLogadoEmitter.subscribe(usuario => {
       this.usuarioLogado = usuario;
-      if(this.usuarioLogado.type == 'medico') {
-        this.menus = [
-          {
-            label: 'Home',
-            action: this.updateMenu.bind(this),
-            icon: 'po-icon po-icon-home',
-            shortLabel: 'Home',
-            link: '/home'
-          },
-          {
-            label: 'Cadastrar Exames',
-            action: this.updateMenu.bind(this),
-            icon: 'po-icon po-icon-user-add',
-            shortLabel: 'Cad. Exames',
-            link: '/cadastrar-exames'
-          },
-          {
-            label: 'Meus Dados',
-            action: this.updateMenu.bind(this),
-            icon: 'po-icon po-icon-archive',
-            shortLabel: 'Dados',
-            link: '/dados-profissional'
-          },
-          {
-            label: 'Sair',
-            action: this.openModalExit.bind(this),
-            icon: 'po-icon po-icon-exit',
-            shortLabel: 'Sair',
-            link: '/sair'
-          },
-        ];
-      }
     });
 
+    this.updateMenus = this.menus;
   }
 
   ngAfterViewChecked(): void {
@@ -112,6 +98,9 @@ export class AppComponent implements AfterViewChecked {
       this.mostraMenu = false;
     } else if (rotaAtiva == 'novo-cadastro'){
       this.mostraMenu = true;
+      this.updateMenus = this.menuNovoCadastro;
+    } else {
+      this.updateMenus = this.menus;
     }
   }
 

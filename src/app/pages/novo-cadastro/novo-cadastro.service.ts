@@ -35,4 +35,8 @@ export class NovoCadastroService {
         headers,
       });
   }
+
+  getUsers() {
+    return this.http.get("http://localhost:9000/api/usuarios");
+  }
 }

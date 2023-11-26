@@ -22,7 +22,7 @@ export class HelpComponent implements OnInit {
   sendMessage() {
     if(this.mensagem != '') {
         this.mensagens.push({
-            anonimato: this.anonimato,
+            anonimato: this.anonimato ? true : false,
             texto: this.mensagem
         });
 

@@ -35,7 +35,8 @@ app.post("/api/respostas", (req, res, next) => {
     mensagem: req.body.mensagem,
     enviadoPor: req.body.enviadoPor,
     resposta: req.body.resposta,
-    idMensagem: req.body.idMensagem
+    idMensagem: req.body.idMensagem,
+    anonimato: req.body.anonimato
   });
   resposta.save();
   console.log(resposta);

@@ -1,0 +1,27 @@
+<po-page-default [p-title]="menuItemSelected">
+    <div class="widgets" *ngIf="mensagens.length > 0">
+        <po-widget *ngFor="let msg of mensagens">
+            <div class="content">
+                <p> {{ msg.texto }}</p>
+                <div *ngIf="msg.respostas">
+                    <p class="po-toolbar-title"> Resposta(s):</p>
+                    <div class="respostas" *ngFor="let rsp of msg.respostas">
+                        <div class="conteudoResposta"> 
+                            <b> {{ rsp.ajudante}} </b>
+                            <br>
+                            {{rsp.texto}}
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!msg.respostas">
+                    <p class="po-toolbar-title"> Resposta(s):</p>
+                    <div class="respostas">
+                        <div class="conteudoResposta"> 
+                             Essa mensagem ainda não foi respondida! 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </po-widget>
+    </div>
+</po-page-default>

@@ -1,0 +1,10 @@
+.respostas {
+    border: 1px solid black;
+    padding: 1px;
+    width: auto;
+    margin-top: 1%;
+}
+
+.conteudoResposta{
+    padding: 1%;
+}

@@ -7,10 +7,10 @@ import { RouterModule } from '@angular/router';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FacComponent } from './fac.component';
+import { FaqComponent } from './faq.component';
 
 @NgModule({
-  declarations: [ FacComponent
+  declarations: [ FaqComponent
    ],
   imports: [
     BrowserModule,
@@ -20,9 +20,10 @@ import { FacComponent } from './fac.component';
     PoTemplatesModule,
     FormsModule,
     HttpClientModule
+    
   ],
-  exports: [ FacComponent ],
+  exports: [ FaqComponent ],
   providers: [],
   bootstrap: []
 })
-export class FacModule { }
+export class FaqModule { }

@@ -23,16 +23,17 @@ export class NovoCadastroComponent implements OnInit {
   beneficiarioForm = {};
   userForm = {};
 
+  users = [];
+
   constructor(
     private novoCadatroService: NovoCadastroService,
     private notificationService: NotificationService,
     private router: Router
-  ) {
-    // const nav = this.router.getCurrentNavigation().extras.state;
-    // this.menuItemSelected = nav.menu;
-  }
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUsers();
+  }
 
   updateForm(event) {
       this.novoCadatroService.setUrl('http://localhost:4000/api/beneficiarios');
@@ -49,7 +50,14 @@ export class NovoCadastroComponent implements OnInit {
       this.notificationService.warning(
         'É necessário preencher todos os campos!'
       );
-    } else {
+    } else if (this.isEmailExist) {
+      this.notificationService.error('Já existe uma conta vinculada a este e-mail!');
+    } else  {
+      if(!this.validarMaiorIdade()) {
+        this.notificationService.warning(
+          'Notamos que você é menor de idade, queremos alertar que determinadas informações sensíveis podem ser encontradas na plataforma!', 10000
+        );
+      }
       this.createUsuario();
       this.router.navigate(['/login']);
     }
@@ -76,4 +84,35 @@ export class NovoCadastroComponent implements OnInit {
         },
       });
   }
+
+  validarMaiorIdade() {
+    const dia = Number(this.dataNascimento.substring(0, 2));
+    const mes = Number(this.dataNascimento.substring(2, 4));
+    const ano = Number(this.dataNascimento.substring(4, 8));
+    const dataNascimento = new Date(ano, mes - 1, dia);
+    const diferencaMilissegundos = new Date().getTime() - dataNascimento.getTime();
+    const diferencaAnos = Math.floor(diferencaMilissegundos / (365.25 * 24 * 60 * 60 * 1000));
+    const diferencaMeses = Math.floor(diferencaMilissegundos / (30.44 * 24 * 60 * 60 * 1000));
+    const diferencaDias = Math.floor(diferencaMilissegundos / (24 * 60 * 60 * 1000));
+    const idadeMinima = 18;
+    if (diferencaAnos > idadeMinima || (diferencaAnos === idadeMinima && diferencaMeses >= 0 && diferencaDias >= 0)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getUsers() {
+    this.novoCadatroService.getUsers().subscribe((users: any) => {
+      users.usuarios.forEach((user) => {
+        this.users.push(user);
+      });
+      console.log('this.users', this.users)
+    });
+  }
+
+  isEmailExist(email: string): boolean {
+    return this.users.some(user => user.usuario === email);
+  }
+
 }

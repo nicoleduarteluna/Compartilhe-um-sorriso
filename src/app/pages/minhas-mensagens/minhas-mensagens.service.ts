@@ -4,23 +4,16 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class TextToHelpService {
+export class MinhasMensagensService {
 
   constructor(private http: HttpClient) { }
 
-  sendText(url, usuario: any) {
-    let headers = new HttpHeaders();
-
-    headers = headers.append("X-PO-No-Error", "true");
-
-    return this.http
-      .post(url, usuario, {
-        headers,
-      });
-  }
-
   getMessages() {
     return this.http.get("http://localhost:4000/api/respostas");
+  }
+
+  getUsers() {
+    return this.http.get("http://localhost:9000/api/usuarios");
   }
 
 }

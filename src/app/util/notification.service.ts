@@ -27,9 +27,9 @@ export class NotificationService {
     this.poNotificationService.success(this.poNotification);
   }
 
-  warning(msg: string) {
+  warning(msg: string, duration = 3000) {
     this.poNotification.message = msg;
-    this.poNotification.duration = 3000;
+    this.poNotification.duration = duration;
     this.poNotificationService.warning(this.poNotification);
   }
 

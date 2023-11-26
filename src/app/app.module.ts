@@ -1,6 +1,5 @@
 import { DadosModule } from './pages/dados/dados.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PoModule } from '@po-ui/ng-components';
 import { PoTemplatesModule, PoPageDynamicSearchModule } from '@po-ui/ng-templates';
@@ -12,16 +11,18 @@ import { AuthGuard } from './core/auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { PoCodeEditorModule } from '@po-ui/ng-code-editor';
 import { HttpClientModule } from '@angular/common/http';
-import { NovoCadastroComponent } from './pages/novo-cadastro/novo-cadastro.component';
 import { NovoCadastroModule } from './pages/novo-cadastro/novo-cadastro.module';
-import { FacModule } from './pages/fac/fac.module';
-import { HelpModule } from './pages/hekp/help.module';
+import { FaqModule } from './pages/faq/faq.module';
+import { HelpModule } from './pages/help/help.module';
 import { TextToHelpModule } from './pages/textToHelp/text-to-help.module';
+import { AppRoutingModule } from './app-routing.module';
+import { MinhasMensagensComponent } from './pages/minhas-mensagens/minhas-mensagens.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    MinhasMensagensComponent
    ],
   imports: [
     BrowserModule,
@@ -36,9 +37,9 @@ import { TextToHelpModule } from './pages/textToHelp/text-to-help.module';
     DadosModule,
     NovoCadastroModule,
     HomeModule,
-    FacModule,
+    FaqModule,
     HelpModule,
-    TextToHelpModule
+    TextToHelpModule,
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
