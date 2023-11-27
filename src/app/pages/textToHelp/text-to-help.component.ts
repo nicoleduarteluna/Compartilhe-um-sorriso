@@ -27,7 +27,6 @@ export class TextToHelpComponent implements OnInit {
         nav.usuarios.forEach(usuario => {
             if(usuario.usuario.toLocaleLowerCase() != sessionStorage.getItem('E-mail').toLocaleLowerCase()) {
                 usuario.mensagens.forEach((mensagem) => {
-                    console.log(mensagem)
                     this.mensagens.push({texto: mensagem.texto, user: usuario.nome, id: mensagem._id, anonimato: mensagem.anonimato
                 });
               });

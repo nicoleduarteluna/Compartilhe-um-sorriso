@@ -7,7 +7,7 @@
                     <p class="po-toolbar-title"> Resposta(s):</p>
                     <div class="respostas" *ngFor="let rsp of msg.respostas">
                         <div class="conteudoResposta"> 
-                            <b> {{ rsp.ajudante}} </b>
+                            <b> {{ rsp.anonimato ? "Anônimo":  rsp.ajudante }} </b>
                             <br>
                             {{rsp.texto}}
                         </div>
@@ -21,6 +21,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </po-widget>
+    </div>
+    <div class="widgets" *ngIf="mensagens.length == 0">
+        <po-widget>
+            <div class="content">
+                <b>Você ainda não enviou nenhuma mensagem!</b>
             </div>
         </po-widget>
     </div>

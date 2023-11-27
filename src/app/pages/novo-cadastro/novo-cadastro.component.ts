@@ -50,7 +50,7 @@ export class NovoCadastroComponent implements OnInit {
       this.notificationService.warning(
         'É necessário preencher todos os campos!'
       );
-    } else if (this.isEmailExist) {
+    } else if (this.isEmailExist(this.email)) {
       this.notificationService.error('Já existe uma conta vinculada a este e-mail!');
     } else  {
       if(!this.validarMaiorIdade()) {
