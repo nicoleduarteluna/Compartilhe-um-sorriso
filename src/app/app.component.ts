@@ -82,7 +82,7 @@ export class AppComponent implements AfterViewChecked {
 
   ngOnInit(){
     this.authGuard.mostraMenuEmit.subscribe(mostra => {
-      this.mostraMenu = mostra
+      this.mostraMenu = mostra;
     });
 
     this.authService.usuarioLogadoEmitter.subscribe(usuario => {

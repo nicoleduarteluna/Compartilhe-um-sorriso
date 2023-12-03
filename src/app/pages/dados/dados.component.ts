@@ -55,6 +55,7 @@ export class DadosComponent implements OnInit {
     this.modalUpdate.open();
   }
 
+  //Chama a API para atualizar os dados do usuário no banco de dados.
   alterarDados() {
    this.updateStorage();
    let userForm = {
@@ -74,6 +75,8 @@ export class DadosComponent implements OnInit {
       });
   }
 
+  //Atualiza as informações do usuário logado no cachê do navegador. 
+  //Em alguns lugares são usuados esses dados, então é preciso atualizá-los aqui também.
   updateStorage() {
     sessionStorage.setItem('User', this.email);
     sessionStorage.setItem('Password', this.senha);

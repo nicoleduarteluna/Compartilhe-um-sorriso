@@ -39,14 +39,17 @@ export class TextToHelpComponent implements OnInit {
     this.getMessages();
   }
 
+  //Método que seta exibeWidgets como false para o componente mudar o que está sendo exibido na tela (*ngIf).
+  //Nesse momento será exibida a mensagem que será respondida, juntamente com a caixa de texto para envio da mensagem de ajuda, botão de envio e 
+  //a opção de anonimato.
   showToHelp(msg) {
-    console.log('msg', msg)
     this.exibeWidgets = false;
     this.mensagem  = msg.texto;
     this.enviadoPor = msg.anonimato ? "Anônimo" : msg.user.split(' ')[0];
     this.idMensagem= msg.id;
   }
 
+  //Método que cadastra a mensagem enviada no banco de dados, através de um POST na API de respostas e depois exibe uma notificação de sucesso ou erro.
   sendTextToHelp() {
     if(this.textToHelp != '') {
         this.loading = true;
@@ -74,6 +77,7 @@ export class TextToHelpComponent implements OnInit {
     }
   }
 
+  //Busca todas as mensagens disponíveis para serem respondidas e exibe somente as que ainda não foram respondidas pelo usuário logado.
   getMessages() {
     let indice;
     this.textToHelpService.getMessages().subscribe((mensagens: any) => {

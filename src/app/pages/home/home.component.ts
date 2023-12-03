@@ -1,15 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  PoMenuItem,
   PoSelectOption,
-  PoTableAction,
   PoTableColumn,
 } from '@po-ui/ng-components';
-import { NotificationService } from 'src/app/util/notification.service';
-import { DadosService } from '../dados/dados.service';
 import { HomeService } from './home.service';
-import { AuthService } from 'src/app/login/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -52,10 +47,7 @@ export class HomeComponent implements OnDestroy {
 
   constructor(
     private router: Router,
-    private homeService: HomeService,
-    private dadosService: DadosService,
-    private notificationService: NotificationService,
-    private authService: AuthService
+    private homeService: HomeService
   ) {
     const nav = this.router.getCurrentNavigation().extras.state;
     this.usuarios = nav.usuarios;
@@ -71,14 +63,17 @@ export class HomeComponent implements OnDestroy {
     });
   }
 
+  //Redireciona para o menu de dados
   redirectToDados() {
     this.router.navigate(['/dados']);
   }
 
+  //Redireciona para o menu de enviar suas mensagens de ajuda
   redirectToAjuda() {
     this.router.navigate(['/help']);
   }
 
+  //Redireciona para ajudar alguém.
   redirectToText() {
     this.router.navigate(['text-to-help'], { state: { usuarios: this.usuarios } });
   }

@@ -19,6 +19,7 @@ export class HelpComponent implements OnInit {
     this.mensagens = JSON.parse(sessionStorage.getItem("Mensagens"));
   }
 
+  //Chama a API que grava a sua mensagem no banco de dados
   sendMessage() {
     if(this.mensagem != '') {
         this.mensagens.push({

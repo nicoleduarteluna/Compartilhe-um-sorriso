@@ -15,6 +15,8 @@ export class AuthService {
 
   constructor(private router: Router, private notificationService: NotificationService) { }
 
+  //Faz a validação do e-mail e senha e caso esteja correto, permite o login. 
+  //E seta as informações do usuário no cachê do browser.
   checkLogin(event, users){
     this.setUsuarios(users);
     users.forEach((user, index) => {

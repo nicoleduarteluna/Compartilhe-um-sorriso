@@ -1,39 +1,4 @@
-/* .widgets {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.autorizador-widget {
-  cursor: pointer;
-  margin-bottom: 15px;
-}
-
-.autorizador-widget :hover {
-  border-color: #0c9abe;
-}
-
-.autorizador-widget .po-widget .po-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.autorizador-widget-text {
-  line-height: 1.33;
-  letter-spacing: normal;
-  text-align: center;
-  color: #0c9abe;
-}
-
-.autorizador-widget-text-descricao {
-  letter-spacing: normal;
-  text-align: center;
-  line-height: 1.71;
-  color: #5e6061;
-  font-size: 15px;
-} */
+/* CSS dos cards de ajudar ou ser ajudado */
 
 .my-div {
   background-color: white;

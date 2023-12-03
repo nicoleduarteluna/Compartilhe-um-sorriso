@@ -15,6 +15,8 @@ export class NotificationService {
 
   constructor(private poNotificationService: PoNotificationService) { }
 
+  //Classe responsável por definir as configurações das notificações e seus tipos.
+  
   information(msg: string) {
     this.poNotification.message = msg;
     this.poNotification.duration = 3000;

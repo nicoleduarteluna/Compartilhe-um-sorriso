@@ -27,12 +27,12 @@ export class MinhasMensagensComponent implements OnInit {
     this.getUsers();
    }
 
+   //Busca todas as respostas de mensagens. 
+   //E filtra se é de alguma mensagem que o usuário logado enviou, para adicionar a resposta no array this.mensagens
    getRespostas() {
     let retorno;
-    let index;
     this.minhasMensagensService.getMessages().subscribe((data: any) => {
        retorno = data.respostas;
-       console.log('retorno', retorno)
        retorno.forEach(rsp => {
           this.mensagens.map(m => {
             if(m._id == rsp.idMensagem) {
@@ -42,24 +42,17 @@ export class MinhasMensagensComponent implements OnInit {
               m.respostas.push(rsp.resposta[0]);
             }
           });
-          // index = this.mensagens.findIndex((msg) => msg._id = rsp.idMensagem);
-          // if(index > -1) {
-          //   if(!this.mensagens[index]['respostas']) {
-          //     this.mensagens[index]['respostas'] = [];
-          //   }
-          //   this.mensagens[index]['respostas'].push(rsp.resposta[0]);
-          //   console.log('this.mensagens', this.mensagens[index])
-          // }
        });
     });
    }
 
+
+   //Busca todas as mensagens e depois filtra para pegar somente as que foram enviadas pelo usuário logado.
    getUsers() {
     this.minhasMensagensService.getUsers().subscribe((users: any) => {
       users.usuarios.forEach(i => {
         if(i.usuario == sessionStorage.getItem('E-mail')) {
           this.mensagens = i.mensagens;
-          console.log("this.mensagens", this.mensagens)
           if(this.mensagens.length > 0) {
             this.getRespostas();
           }

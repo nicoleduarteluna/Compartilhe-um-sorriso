@@ -30,10 +30,12 @@ export class LoginComponent implements OnInit {
   user: string = '';
   users: any[] = [];
 
+  //Chama o serivce authService para a validação do login.
   goToLogin(event) {
     this.authservice.checkLogin(event, this.users);
   }
 
+  //Busca todos os usuários.
   getUsers() {
     this.loginService.getUsers().subscribe((users: any) => {
       users.usuarios.forEach((user) => {

@@ -10,6 +10,7 @@ import { HelpComponent } from './pages/help/help.component';
 import { TextToHelpComponent } from './pages/textToHelp/text-to-help.component';
 import { MinhasMensagensComponent } from './pages/minhas-mensagens/minhas-mensagens.component';
 
+//Controla todas as rotas disponíveis e quais componentes cada um chamará
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -21,7 +22,6 @@ const routes: Routes = [
   { path: 'my-messages', component: MinhasMensagensComponent, canActivate:[AuthGuard] },
   { path: 'novo-cadastro', component: NovoCadastroComponent, canActivate:[AuthGuard] }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

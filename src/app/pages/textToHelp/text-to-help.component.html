@@ -1,6 +1,7 @@
 <po-page-default p-title="Você quer ajudar alguém?">
     <div class="po-field-title">
         Ajude a fazer a diferença no dia de alguém! 
+        <!-- DIV que exibe todas as mensagens que estão esperando por resposta. *ngFor é resposável por iterar todas as mensagens. -->
         <div class="widgets" *ngIf="exibeWidgets && mensagens.length > 0 && !loading">
             <po-widget *ngFor="let msg of mensagens">
                 <div class="content">
@@ -17,6 +18,7 @@
                 </div>
             </po-widget>
         </div>
+        <!-- DIV responsável por exibir a mensagem quando não há nenhuma mensagem esperando por resposta -->
         <div class="widgets" *ngIf="mensagens.length == 0">
             <po-widget>
                 <div class="content">
@@ -25,6 +27,7 @@
                 </div>
             </po-widget>
         </div>
+        <!-- DIV responsável de exibir o layout de quando está respondendo alguma mensagem que foi selecionada -->
         <div class="widgets" *ngIf="!exibeWidgets">
             <po-widget>
                 <div class="content">
